@@ -202,8 +202,8 @@ section{
 
 .pricing{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
 }
 
 .price-card{
@@ -211,7 +211,7 @@ section{
     background:#101521;
     border:1px solid rgba(255,255,255,.08);
     border-radius:18px;
-    padding:30px 25px;
+    padding:30px 20px;
     text-align:center;
 }
 
@@ -238,13 +238,13 @@ section{
 }
 
 .price{
-    font-size:42px;
+    font-size:38px;
     font-weight:800;
     margin-bottom:5px;
 }
 
 .price span{
-    font-size:15px;
+    font-size:14px;
     color:#888;
     font-weight:normal;
 }
@@ -369,6 +369,14 @@ footer a{
 }
 
 /* MOBILE */
+
+@media(max-width:1000px){
+
+    .pricing{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
 
 @media(max-width:800px){
 
@@ -545,12 +553,40 @@ footer a{
 
         <div class="pricing">
 
+            <!-- TEST GRATUIT -->
+
+            <div class="price-card">
+
+                <h3>Test gratuit</h3>
+
+                <div class="price">
+                    Gratuit
+                </div>
+
+                <p>Découvrez le service</p>
+
+                <ul>
+                    <li>Accès au test</li>
+                    <li>Support client</li>
+                    <li>Compatible appareils</li>
+                    <li>Activation rapide</li>
+                </ul>
+
+                <a href="#contact" class="btn">
+                    Demander
+                </a>
+
+            </div>
+
+
+            <!-- 1 MOIS -->
+
             <div class="price-card">
 
                 <h3>1 Mois</h3>
 
                 <div class="price">
-                    9,90€ <span>/mois</span>
+                    10€ <span>/mois</span>
                 </div>
 
                 <p>Formule flexible</p>
@@ -568,6 +604,8 @@ footer a{
 
             </div>
 
+
+            <!-- 6 MOIS -->
 
             <div class="price-card popular">
 
@@ -597,6 +635,8 @@ footer a{
             </div>
 
 
+            <!-- 12 MOIS -->
+
             <div class="price-card">
 
                 <h3>12 Mois</h3>
@@ -620,6 +660,8 @@ footer a{
 
             </div>
 
+
+            <!-- 24 MOIS -->
 
             <div class="price-card">
 
@@ -807,10 +849,6 @@ footer a{
     <div class="container">
 
         © 2026 MONIPTV — Tous droits réservés.
-
-        <br><br>
-
-        
 
     </div>
 
