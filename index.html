@@ -1,1 +1,832 @@
-# Play-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mon IPTV</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    background:#080b14;
+    color:white;
+    line-height:1.5;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:92%;
+    max-width:1100px;
+    margin:auto;
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(8,11,20,.95);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+}
+
+.nav{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#287cff;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#bbb;
+    font-size:15px;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:680px;
+    display:flex;
+    align-items:center;
+    text-align:center;
+    background:
+    radial-gradient(circle at 50% 20%,rgba(38,112,255,.25),transparent 40%),
+    #080b14;
+}
+
+.hero-content{
+    width:100%;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:30px;
+    background:rgba(40,124,255,.12);
+    border:1px solid rgba(40,124,255,.3);
+    color:#5e9cff;
+    font-size:14px;
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-size:clamp(38px,8vw,70px);
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#287cff;
+}
+
+.hero p{
+    max-width:650px;
+    margin:0 auto 30px;
+    color:#aaa;
+    font-size:18px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 25px;
+    border-radius:10px;
+    background:#287cff;
+    color:white;
+    font-weight:700;
+    border:none;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    background:#176bea;
+}
+
+.btn-secondary{
+    background:#171c2a;
+    margin-left:8px;
+}
+
+/* SECTION */
+
+section{
+    padding:80px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#9297a5;
+}
+
+/* FEATURES */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature{
+    background:#101521;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:16px;
+    padding:30px;
+    text-align:center;
+}
+
+.feature-icon{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.feature h3{
+    margin-bottom:8px;
+}
+
+.feature p{
+    color:#999;
+    font-size:14px;
+}
+
+/* PRICING */
+
+.pricing{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.price-card{
+    position:relative;
+    background:#101521;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:30px 25px;
+    text-align:center;
+}
+
+.price-card.popular{
+    border:2px solid #287cff;
+    transform:scale(1.03);
+}
+
+.popular-label{
+    position:absolute;
+    top:-14px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#287cff;
+    padding:5px 15px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.price-card h3{
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.price{
+    font-size:42px;
+    font-weight:800;
+    margin-bottom:5px;
+}
+
+.price span{
+    font-size:15px;
+    color:#888;
+    font-weight:normal;
+}
+
+.price-card p{
+    color:#888;
+    margin-bottom:25px;
+}
+
+.price-card ul{
+    list-style:none;
+    text-align:left;
+    margin-bottom:25px;
+}
+
+.price-card li{
+    padding:8px 0;
+    color:#ccc;
+    font-size:14px;
+}
+
+.price-card li::before{
+    content:"✓";
+    color:#287cff;
+    font-weight:bold;
+    margin-right:8px;
+}
+
+/* DEVICES */
+
+.devices{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.device{
+    padding:25px 15px;
+    background:#101521;
+    border-radius:14px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.device div{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.device p{
+    color:#aaa;
+    font-size:14px;
+}
+
+/* CTA */
+
+.cta{
+    margin-top:20px;
+    background:linear-gradient(135deg,#111b31,#0c1220);
+    border:1px solid rgba(40,124,255,.25);
+    border-radius:22px;
+    padding:55px 25px;
+    text-align:center;
+}
+
+.cta h2{
+    font-size:34px;
+    margin-bottom:12px;
+}
+
+.cta p{
+    color:#999;
+    margin-bottom:25px;
+}
+
+/* FAQ */
+
+.faq{
+    max-width:800px;
+    margin:auto;
+}
+
+.faq-item{
+    background:#101521;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:12px;
+    margin-bottom:12px;
+    overflow:hidden;
+}
+
+.faq-question{
+    padding:20px;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    font-weight:600;
+}
+
+.faq-answer{
+    display:none;
+    padding:0 20px 20px;
+    color:#999;
+    font-size:14px;
+}
+
+.faq-item.active .faq-answer{
+    display:block;
+}
+
+/* FOOTER */
+
+footer{
+    padding:35px 0;
+    border-top:1px solid rgba(255,255,255,.08);
+    text-align:center;
+    color:#777;
+    font-size:13px;
+}
+
+footer a{
+    color:#aaa;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:70px;
+        left:0;
+        right:0;
+        background:#080b14;
+        flex-direction:column;
+        padding:20px;
+        border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .features,
+    .pricing{
+        grid-template-columns:1fr;
+    }
+
+    .price-card.popular{
+        transform:none;
+    }
+
+    .devices{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    section{
+        padding:60px 0;
+    }
+
+    .hero{
+        min-height:600px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .btn{
+        width:100%;
+        margin:5px 0;
+    }
+
+    .btn-secondary{
+        margin-left:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container nav">
+
+        <a href="#" class="logo">
+            MON<span>IPTV</span>
+        </a>
+
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#accueil">Accueil</a>
+            <a href="#avantages">Avantages</a>
+            <a href="#tarifs">Tarifs</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main>
+
+<!-- ACCUEIL -->
+
+<section class="hero" id="accueil">
+    <div class="container hero-content">
+
+        <div class="badge">
+            📺 Votre divertissement, simplement
+        </div>
+
+        <h1>
+            Votre télévision<br>
+            <span>où que vous soyez</span>
+        </h1>
+
+        <p>
+            Une expérience simple et moderne pour accéder
+            à vos contenus autorisés sur vos appareils préférés.
+        </p>
+
+        <a href="#tarifs" class="btn">
+            Voir les offres
+        </a>
+
+        <a href="#contact" class="btn btn-secondary">
+            Nous contacter
+        </a>
+
+    </div>
+</section>
+
+
+<!-- AVANTAGES -->
+
+<section id="avantages">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Pourquoi nous choisir ?</h2>
+            <p>Une expérience pensée pour être simple et rapide.</p>
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Simple</h3>
+                <p>
+                    Une interface claire et facile à utiliser
+                    depuis votre téléphone ou votre télévision.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>Multi-appareils</h3>
+                <p>
+                    Utilisez votre service sur vos appareils
+                    compatibles.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>Accès sécurisé</h3>
+                <p>
+                    Vos informations de connexion sont traitées
+                    avec attention.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TARIFS -->
+
+<section id="tarifs">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Nos offres</h2>
+            <p>Choisissez la durée qui vous convient.</p>
+        </div>
+
+        <div class="pricing">
+
+            <div class="price-card">
+
+                <h3>1 Mois</h3>
+
+                <div class="price">
+                    9,90€ <span>/mois</span>
+                </div>
+
+                <p>Formule flexible</p>
+
+                <ul>
+                    <li>Accès au service</li>
+                    <li>Support client</li>
+                    <li>Compatible appareils</li>
+                    <li>Activation rapide</li>
+                </ul>
+
+                <a href="#contact" class="btn">
+                    Commander
+                </a>
+
+            </div>
+
+
+            <div class="price-card popular">
+
+                <div class="popular-label">
+                    POPULAIRE
+                </div>
+
+                <h3>6 Mois</h3>
+
+                <div class="price">
+                    49,90€ <span>/6 mois</span>
+                </div>
+
+                <p>Formule économique</p>
+
+                <ul>
+                    <li>Accès au service</li>
+                    <li>Support client</li>
+                    <li>Compatible appareils</li>
+                    <li>Activation rapide</li>
+                </ul>
+
+                <a href="#contact" class="btn">
+                    Commander
+                </a>
+
+            </div>
+
+
+            <div class="price-card">
+
+                <h3>12 Mois</h3>
+
+                <div class="price">
+                    79,90€ <span>/an</span>
+                </div>
+
+                <p>Formule longue durée</p>
+
+                <ul>
+                    <li>Accès au service</li>
+                    <li>Support client</li>
+                    <li>Compatible appareils</li>
+                    <li>Activation rapide</li>
+                </ul>
+
+                <a href="#contact" class="btn">
+                    Commander
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- APPAREILS -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Compatible avec vos appareils</h2>
+            <p>Selon les applications et équipements compatibles.</p>
+        </div>
+
+        <div class="devices">
+
+            <div class="device">
+                <div>📱</div>
+                <p>Smartphone</p>
+            </div>
+
+            <div class="device">
+                <div>📺</div>
+                <p>Smart TV</p>
+            </div>
+
+            <div class="device">
+                <div>💻</div>
+                <p>Ordinateur</p>
+            </div>
+
+            <div class="device">
+                <div>📦</div>
+                <p>Box compatible</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="cta">
+
+            <h2>Besoin d'informations ?</h2>
+
+            <p>
+                Contactez-nous pour connaître les offres disponibles
+                et les conditions d'utilisation.
+            </p>
+
+            <!-- REMPLACE LE NUMÉRO PAR TON WHATSAPP -->
+            <a
+                href="https://wa.me/32470000000"
+                class="btn"
+                target="_blank">
+                💬 Nous contacter
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section id="faq">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Questions fréquentes</h2>
+            <p>Les réponses aux questions les plus courantes.</p>
+        </div>
+
+        <div class="faq">
+
+            <div class="faq-item">
+
+                <div class="faq-question">
+                    Comment commander ?
+                    <span>＋</span>
+                </div>
+
+                <div class="faq-answer">
+                    Utilisez le bouton de contact et indiquez
+                    la formule qui vous intéresse.
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <div class="faq-question">
+                    Quels appareils sont compatibles ?
+                    <span>＋</span>
+                </div>
+
+                <div class="faq-answer">
+                    La compatibilité dépend du lecteur,
+                    de l'application et du service utilisé.
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <div class="faq-question">
+                    Le site demande-t-il ma localisation ?
+                    <span>＋</span>
+                </div>
+
+                <div class="faq-answer">
+                    Non. Ce site ne contient aucune fonction
+                    de géolocalisation GPS.
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <div class="faq-question">
+                    Comment obtenir de l'aide ?
+                    <span>＋</span>
+                </div>
+
+                <div class="faq-answer">
+                    Utilisez le bouton de contact pour nous
+                    envoyer votre demande.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        © 2026 MONIPTV — Tous droits réservés.
+
+        <br><br>
+
+        Service destiné à des contenus et flux pour lesquels
+        les droits de diffusion sont détenus ou autorisés.
+
+    </div>
+
+</footer>
+
+
+<script>
+
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+
+
+document.querySelectorAll(".faq-question").forEach(function(question){
+
+    question.addEventListener("click",function(){
+
+        const item = this.parentElement;
+
+        item.classList.toggle("active");
+
+    });
+
+});
+
+
+// Fermer le menu après clic
+
+document.querySelectorAll(".nav-links a").forEach(function(link){
+
+    link.addEventListener("click",function(){
+
+        document.getElementById("navLinks").classList.remove("active");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
