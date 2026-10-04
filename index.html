@@ -320,6 +320,48 @@ section{
     margin-bottom:25px;
 }
 
+/* CONTACT FORM */
+
+.contact-form{
+    max-width:650px;
+    margin:30px auto 0;
+    text-align:left;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:14px 16px;
+    margin-bottom:15px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#080b14;
+    color:white;
+    font-family:inherit;
+    font-size:15px;
+    outline:none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+    border-color:#287cff;
+}
+
+.contact-form textarea{
+    min-height:140px;
+    resize:vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+    color:#777;
+}
+
+.contact-form .btn{
+    width:100%;
+    margin:0;
+}
+
 /* FAQ */
 
 .faq{
@@ -459,7 +501,6 @@ footer a{
     </div>
 </header>
 
-
 <main>
 
 <!-- ACCUEIL -->
@@ -491,7 +532,6 @@ footer a{
 
     </div>
 </section>
-
 
 <!-- AVANTAGES -->
 
@@ -539,7 +579,6 @@ footer a{
 
 </section>
 
-
 <!-- TARIFS -->
 
 <section id="tarifs">
@@ -578,7 +617,6 @@ footer a{
 
             </div>
 
-
             <!-- VANILLE -->
 
             <div class="price-card">
@@ -605,7 +643,6 @@ footer a{
                 </a>
 
             </div>
-
 
             <!-- CITRON -->
 
@@ -638,7 +675,6 @@ footer a{
 
             </div>
 
-
             <!-- OCÉAN -->
 
             <div class="price-card">
@@ -665,7 +701,6 @@ footer a{
                 </a>
 
             </div>
-
 
             <!-- ÉVASION -->
 
@@ -699,7 +734,6 @@ footer a{
     </div>
 
 </section>
-
 
 <!-- APPAREILS -->
 
@@ -740,7 +774,6 @@ footer a{
 
 </section>
 
-
 <!-- CTA -->
 
 <section id="contact">
@@ -756,20 +789,58 @@ footer a{
                 et les conditions d'utilisation.
             </p>
 
+            <!-- WHATSAPP -->
             <!-- REMPLACE LE NUMÉRO PAR TON WHATSAPP -->
             <a
                 href="https://wa.me/32470000000"
                 class="btn"
                 target="_blank">
-                💬 Nous contacter
+                💬 Nous contacter sur WhatsApp
             </a>
+
+            <!-- FORMULAIRE -->
+
+            <form
+                class="contact-form"
+                action="https://formsubmit.co/el/bovilo"
+                method="POST">
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Votre nom"
+                    required>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Votre adresse e-mail"
+                    required>
+
+                <input
+                    type="text"
+                    name="subject"
+                    placeholder="Sujet"
+                    required>
+
+                <textarea
+                    name="message"
+                    placeholder="Votre message"
+                    required></textarea>
+
+                <button
+                    type="submit"
+                    class="btn">
+                    ✉️ Envoyer le message
+                </button>
+
+            </form>
 
         </div>
 
     </div>
 
 </section>
-
 
 <!-- FAQ -->
 
@@ -798,7 +869,6 @@ footer a{
 
             </div>
 
-
             <div class="faq-item">
 
                 <div class="faq-question">
@@ -812,7 +882,6 @@ footer a{
                 </div>
 
             </div>
-
 
             <div class="faq-item">
 
@@ -828,7 +897,6 @@ footer a{
 
             </div>
 
-
             <div class="faq-item">
 
                 <div class="faq-question">
@@ -837,8 +905,8 @@ footer a{
                 </div>
 
                 <div class="faq-answer">
-                    Utilisez le bouton de contact pour nous
-                    envoyer votre demande.
+                    Utilisez le formulaire de contact ou
+                    WhatsApp pour nous envoyer votre demande.
                 </div>
 
             </div>
@@ -851,7 +919,6 @@ footer a{
 
 </main>
 
-
 <footer>
 
     <div class="container">
@@ -862,13 +929,11 @@ footer a{
 
 </footer>
 
-
 <script>
 
 function toggleMenu(){
     document.getElementById("navLinks").classList.toggle("active");
 }
-
 
 document.querySelectorAll(".faq-question").forEach(function(question){
 
@@ -881,7 +946,6 @@ document.querySelectorAll(".faq-question").forEach(function(question){
     });
 
 });
-
 
 // Fermer le menu après clic
 
