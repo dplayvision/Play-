@@ -362,6 +362,18 @@ section{
     margin:0;
 }
 
+.success-message{
+    display:none;
+    margin-top:20px;
+    padding:16px;
+    border-radius:10px;
+    background:rgba(40,200,120,.12);
+    border:1px solid rgba(40,200,120,.3);
+    color:#65e6a0;
+    text-align:center;
+    font-weight:600;
+}
+
 /* FAQ */
 
 .faq{
@@ -533,6 +545,7 @@ footer a{
     </div>
 </section>
 
+
 <!-- AVANTAGES -->
 
 <section id="avantages">
@@ -579,6 +592,7 @@ footer a{
 
 </section>
 
+
 <!-- TARIFS -->
 
 <section id="tarifs">
@@ -617,6 +631,7 @@ footer a{
 
             </div>
 
+
             <!-- VANILLE -->
 
             <div class="price-card">
@@ -643,6 +658,7 @@ footer a{
                 </a>
 
             </div>
+
 
             <!-- CITRON -->
 
@@ -675,6 +691,7 @@ footer a{
 
             </div>
 
+
             <!-- OCÉAN -->
 
             <div class="price-card">
@@ -701,6 +718,7 @@ footer a{
                 </a>
 
             </div>
+
 
             <!-- ÉVASION -->
 
@@ -734,6 +752,7 @@ footer a{
     </div>
 
 </section>
+
 
 <!-- APPAREILS -->
 
@@ -774,7 +793,8 @@ footer a{
 
 </section>
 
-<!-- CTA -->
+
+<!-- CTA / CONTACT -->
 
 <section id="contact">
 
@@ -798,12 +818,24 @@ footer a{
                 💬 Nous contacter sur WhatsApp
             </a>
 
+
             <!-- FORMULAIRE -->
 
             <form
                 class="contact-form"
-                action="https://formsubmit.co/el/bovilo"
+                id="contactForm"
+                action="https://formsubmit.co/ajax/bovilo"
                 method="POST">
+
+                <input
+                    type="hidden"
+                    name="_subject"
+                    value="Nouveau message depuis ARÔMA">
+
+                <input
+                    type="hidden"
+                    name="_captcha"
+                    value="false">
 
                 <input
                     type="text"
@@ -830,17 +862,25 @@ footer a{
 
                 <button
                     type="submit"
-                    class="btn">
+                    class="btn"
+                    id="submitButton">
                     ✉️ Envoyer le message
                 </button>
 
             </form>
+
+            <div
+                class="success-message"
+                id="successMessage">
+                ✅ Message envoyé ! Nous vous répondrons dès que possible.
+            </div>
 
         </div>
 
     </div>
 
 </section>
+
 
 <!-- FAQ -->
 
@@ -869,6 +909,7 @@ footer a{
 
             </div>
 
+
             <div class="faq-item">
 
                 <div class="faq-question">
@@ -883,6 +924,7 @@ footer a{
 
             </div>
 
+
             <div class="faq-item">
 
                 <div class="faq-question">
@@ -896,6 +938,7 @@ footer a{
                 </div>
 
             </div>
+
 
             <div class="faq-item">
 
@@ -919,6 +962,7 @@ footer a{
 
 </main>
 
+
 <footer>
 
     <div class="container">
@@ -929,11 +973,67 @@ footer a{
 
 </footer>
 
+
 <script>
 
 function toggleMenu(){
     document.getElementById("navLinks").classList.toggle("active");
 }
+
+
+/* FORMULAIRE CONTACT */
+
+document.getElementById("contactForm").addEventListener("submit", async function(event){
+
+    event.preventDefault();
+
+    const form = this;
+    const button = document.getElementById("submitButton");
+    const success = document.getElementById("successMessage");
+
+    button.disabled = true;
+    button.textContent = "⏳ Envoi en cours...";
+
+    try{
+
+        const response = await fetch(form.action,{
+            method:"POST",
+            body:new FormData(form),
+            headers:{
+                "Accept":"application/json"
+            }
+        });
+
+        if(response.ok){
+
+            form.reset();
+
+            form.style.display="none";
+
+            success.style.display="block";
+
+        }else{
+
+            button.disabled=false;
+            button.textContent="✉️ Envoyer le message";
+
+            alert("Impossible d'envoyer le message. Veuillez réessayer.");
+
+        }
+
+    }catch(error){
+
+        button.disabled=false;
+        button.textContent="✉️ Envoyer le message";
+
+        alert("Une erreur est survenue. Veuillez réessayer.");
+
+    }
+
+});
+
+
+/* FAQ */
 
 document.querySelectorAll(".faq-question").forEach(function(question){
 
@@ -947,7 +1047,8 @@ document.querySelectorAll(".faq-question").forEach(function(question){
 
 });
 
-// Fermer le menu après clic
+
+/* Fermer le menu après clic */
 
 document.querySelectorAll(".nav-links a").forEach(function(link){
 
