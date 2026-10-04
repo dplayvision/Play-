@@ -545,7 +545,6 @@ footer a{
     </div>
 </section>
 
-
 <!-- AVANTAGES -->
 
 <section id="avantages">
@@ -592,7 +591,6 @@ footer a{
 
 </section>
 
-
 <!-- TARIFS -->
 
 <section id="tarifs">
@@ -631,7 +629,6 @@ footer a{
 
             </div>
 
-
             <!-- VANILLE -->
 
             <div class="price-card">
@@ -658,7 +655,6 @@ footer a{
                 </a>
 
             </div>
-
 
             <!-- CITRON -->
 
@@ -691,7 +687,6 @@ footer a{
 
             </div>
 
-
             <!-- OCÉAN -->
 
             <div class="price-card">
@@ -718,7 +713,6 @@ footer a{
                 </a>
 
             </div>
-
 
             <!-- ÉVASION -->
 
@@ -752,7 +746,6 @@ footer a{
     </div>
 
 </section>
-
 
 <!-- APPAREILS -->
 
@@ -793,8 +786,7 @@ footer a{
 
 </section>
 
-
-<!-- CTA / CONTACT -->
+<!-- CONTACT -->
 
 <section id="contact">
 
@@ -811,6 +803,7 @@ footer a{
 
             <!-- WHATSAPP -->
             <!-- REMPLACE LE NUMÉRO PAR TON WHATSAPP -->
+
             <a
                 href="https://wa.me/32470000000"
                 class="btn"
@@ -818,13 +811,12 @@ footer a{
                 💬 Nous contacter sur WhatsApp
             </a>
 
-
             <!-- FORMULAIRE -->
 
             <form
                 class="contact-form"
                 id="contactForm"
-                action="https://formsubmit.co/ajax/bovilo"
+                action="https://formsubmit.co/ajax/aromaaroma114@gmail.com"
                 method="POST">
 
                 <input
@@ -881,7 +873,6 @@ footer a{
 
 </section>
 
-
 <!-- FAQ -->
 
 <section id="faq">
@@ -909,7 +900,6 @@ footer a{
 
             </div>
 
-
             <div class="faq-item">
 
                 <div class="faq-question">
@@ -924,7 +914,6 @@ footer a{
 
             </div>
 
-
             <div class="faq-item">
 
                 <div class="faq-question">
@@ -938,7 +927,6 @@ footer a{
                 </div>
 
             </div>
-
 
             <div class="faq-item">
 
@@ -962,7 +950,6 @@ footer a{
 
 </main>
 
-
 <footer>
 
     <div class="container">
@@ -973,7 +960,6 @@ footer a{
 
 </footer>
 
-
 <script>
 
 function toggleMenu(){
@@ -981,7 +967,7 @@ function toggleMenu(){
 }
 
 
-/* FORMULAIRE CONTACT */
+/* FORMULAIRE */
 
 document.getElementById("contactForm").addEventListener("submit", async function(event){
 
@@ -996,13 +982,16 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
     try{
 
-        const response = await fetch(form.action,{
-            method:"POST",
-            body:new FormData(form),
-            headers:{
-                "Accept":"application/json"
+        const response = await fetch(
+            "https://formsubmit.co/ajax/aromaaroma114@gmail.com",
+            {
+                method:"POST",
+                body:new FormData(form),
+                headers:{
+                    "Accept":"application/json"
+                }
             }
-        });
+        );
 
         if(response.ok){
 
@@ -1048,7 +1037,7 @@ document.querySelectorAll(".faq-question").forEach(function(question){
 });
 
 
-/* Fermer le menu après clic */
+/* FERMER LE MENU APRÈS CLIC */
 
 document.querySelectorAll(".nav-links a").forEach(function(link){
 
